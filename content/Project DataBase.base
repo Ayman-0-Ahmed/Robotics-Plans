@@ -1,31 +1,38 @@
 filters:
   and:
     - file.folder == "Projects"
+formulas:
+  Test: |
+    if(note.Easiness > 4,"⭐⭐⭐⭐⭐",
+    if(note.Easiness > 3,"⭐⭐⭐⭐",
+    if(note.Easiness > 2,"⭐⭐⭐",
+    if(note.Easiness > 1,"⭐⭐",
+    if(note.Easiness > 0,"⭐","")))))
+  Easi: |-
+    if(note.Easiness > 4,"⭐⭐⭐⭐⭐",
+    if(note.Easiness > 3,"⭐⭐⭐⭐",
+    if(note.Easiness > 2,"⭐⭐⭐",
+    if(note.Easiness > 1,"⭐⭐",
+    if(note.Easiness > 0,"⭐","")))))
+  Easiness: |-
+    if(note.Easiness > 4,"⭐⭐⭐⭐⭐",
+    if(note.Easiness > 3,"⭐⭐⭐⭐",
+    if(note.Easiness > 2,"⭐⭐⭐",
+    if(note.Easiness > 1,"⭐⭐",
+    if(note.Easiness > 0,"⭐","")))))
 properties:
   note.Cost_China:
     displayName: Cost (China)
   note.Cost_BD:
     displayName: Cost (BD)
+  formula.Test:
+    displayName: Easiness
 views:
-  - type: table
-    name: Table View
-    order:
-      - file.name
-      - Easiness
-      - Cost_China
-      - Cost_BD
-    sort:
-      - property: Easiness
-        direction: DESC
-      - property: Cost_China
-        direction: ASC
-    columnSize:
-      note.Easiness: 99
   - type: cards
     name: Card View
     order:
       - file.name
-      - Easiness
+      - formula.Easiness
       - Cost_China
       - Cost_BD
     sort:
@@ -34,6 +41,20 @@ views:
     image: note.icon
     imageAspectRatio: 1
     cardSize: 200
+  - type: table
+    name: Table View
+    order:
+      - file.name
+      - formula.Test
+      - Cost_China
+      - Cost_BD
+    sort:
+      - property: Easiness
+        direction: DESC
+      - property: Cost_China
+        direction: ASC
+    columnSize:
+      formula.Test: 124
   - type: table
     name: Arduino (Table)
     filters:
