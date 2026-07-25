@@ -1,19 +1,19 @@
 ---
 publish: true
 created: 2026-07-21T21:28:19.888+06:00
-modified: 2026-07-25T19:54:12.727+06:00
-published: 2026-07-25T19:54:12.727+06:00
+modified: 2026-07-26T00:12:58.640+06:00
+published: 2026-07-26T00:12:58.640+06:00
 Easiness: 5
 Cost_China: 970
 Cost_BD: 2035
-icon: https://irongatescenery.co.uk/wp-content/uploads/2020/07/Greenhouse.jpg
+icon: https://jeulin.com/media/catalog/product/s/e/serre_connectee_277624_2_fd3d.jpg
 Arduino: false
 ESP: true
 STM32: false
 Raspberry: false
 ---
 
-![Ref|500](https://irongatescenery.co.uk/wp-content/uploads/2020/07/Greenhouse.jpg)
+![Ref|500](https://jeulin.com/media/catalog/product/s/e/serre_connectee_277624_2_fd3d.jpg)
 
 **Parts:**
 
