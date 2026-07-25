@@ -1,0 +1,78 @@
+filters:
+  and:
+    - file.folder == "Parts"
+formulas:
+  Supply Voltage: |-
+    if(note.supplyVoltageMin, if(note.supplyVoltageMin == note.supplyVoltageMax, note.supplyVoltageMin + "V", note.supplyVoltageMin + "V - " + note.supplyVoltageMax + "V"
+    ),"")
+  Operating Voltage: |-
+    if(note.opVoltageMin, if(note.opVoltageMin == note.opVoltageMax, note.opVoltageMin + "V", note.opVoltageMin + "V - " + note.opVoltageMax + "V"
+    ), "")
+  Output Voltage: |-
+    if(note.outputVoltageMin, if(note.outputVoltageMin == note.outputVoltageMax, note.outputVoltageMin + "V", note.outputVoltageMin + "V - " + note.outputVoltageMax + "V"
+    ), "")
+  Weight: if(note.weight_g, if(note.weight_g > 100,note.weight_g/1000 + "kg",note.weight_g+"g"), "")
+  Size: if(note.width_mm,if(note.width_mm > 99 || note.height_mm > 99 || note.length_mm > 99,note.width_mm/100 + " x " + note.length_mm/100 + " x " + note.height_mm/100 + " cm", note.width_mm + " x " + note.length_mm + " x " + note.height_mm + " mm"),"")
+  Current Draw: if(note.current,if(current>999,current/1000+"A",current+"mA"),"")
+properties:
+  note.cost_skyBuy:
+    displayName: Cost (SkyBuy)
+  note.cost_roboBD:
+    displayName: Cost (Rrobotics BD)
+  note.cost_elecBD:
+    displayName: Cost (Electronics BD)
+  note.cost_techShop:
+    displayName: Cost (TechShop BD)
+views:
+  - type: table
+    name: Table View
+    order:
+      - file.name
+      - formula.Supply Voltage
+      - formula.Operating Voltage
+      - formula.Output Voltage
+      - formula.Current Draw
+      - formula.Weight
+      - formula.Size
+      - cost_skyBuy
+      - cost_elecBD
+      - cost_techShop
+      - cost_roboBD
+    sort:
+      - property: file.name
+        direction: ASC
+      - property: cost_roboBD
+        direction: ASC
+      - property: cost_techShop
+        direction: DESC
+      - property: cost_elecBD
+        direction: DESC
+      - property: cost_skyBuy
+        direction: DESC
+      - property: formula.Operating Voltage
+        direction: DESC
+      - property: minInputVoltage
+        direction: ASC
+    columnSize:
+      file.name: 290
+      formula.Supply Voltage: 89
+      formula.Operating Voltage: 111
+      formula.Output Voltage: 92
+      formula.Current Draw: 59
+      formula.Weight: 74
+      formula.Size: 121
+      note.cost_skyBuy: 109
+      note.cost_elecBD: 130
+      note.cost_techShop: 127
+  - type: cards
+    name: Card View
+    order:
+      - file.name
+      - formula.Supply Voltage
+      - formula.Operating Voltage
+      - formula.Output Voltage
+      - formula.Current Draw
+      - formula.Weight
+      - formula.Size
+      - tags
+    image: note.icon

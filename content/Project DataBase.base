@@ -1,0 +1,81 @@
+filters:
+  and:
+    - file.folder == "Projects"
+properties:
+  note.Cost_China:
+    displayName: Cost (China)
+  note.Cost_BD:
+    displayName: Cost (BD)
+views:
+  - type: table
+    name: Table View
+    order:
+      - file.name
+      - Easiness
+      - Cost_China
+      - Cost_BD
+    sort:
+      - property: Easiness
+        direction: DESC
+      - property: Cost_China
+        direction: ASC
+    columnSize:
+      note.Easiness: 99
+  - type: cards
+    name: Card View
+    order:
+      - file.name
+      - Easiness
+      - Cost_China
+      - Cost_BD
+    sort:
+      - property: Easiness
+        direction: DESC
+    image: note.icon
+    imageAspectRatio: 1
+    cardSize: 200
+  - type: table
+    name: Arduino (Table)
+    filters:
+      and:
+        - Arduino == true
+    order:
+      - file.name
+      - Easiness
+      - Cost (China)
+      - Cost (BD)
+    sort:
+      - property: Easiness
+        direction: ASC
+  - type: cards
+    name: Arduino (Card)
+    filters:
+      and:
+        - Arduino == true
+    order:
+      - file.name
+      - Easiness
+      - Cost (BD)
+      - Cost (China)
+    image: note.icon
+  - type: table
+    name: ESP32 (Table)
+    filters:
+      and:
+        - ESP == true
+    order:
+      - file.name
+      - Easiness
+      - Cost_China
+      - Cost_BD
+  - type: cards
+    name: ESP32 (Card)
+    filters:
+      and:
+        - ESP == true
+    order:
+      - file.name
+      - Easiness
+      - Cost_China
+      - Cost_BD
+    image: note.icon
